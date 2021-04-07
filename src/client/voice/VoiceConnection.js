@@ -168,7 +168,7 @@ class VoiceConnection extends EventEmitter {
    * @type {?VoiceState}
    */
   get voice() {
-    return this.channel.guild.me ? (this.channel.guild.me.voice ?? null;
+    return this.channel.guild.me ? ((this.channel.guild.me.voice !== null && this.channel.guild.me.voice !== undefined) ? this.channel.guild.me.voice : null) : null;
   }
 
   /**
@@ -182,8 +182,8 @@ class VoiceConnection extends EventEmitter {
       {
         guild_id: this.channel.guild.id,
         channel_id: this.channel.id,
-        self_mute: this.voice ? (this.voice.selfMute ?? false) : null,
-        self_deaf: this.voice ? (this.voice.selfDeaf ?? false) : null,
+        self_mute: this.voice ? ((this.voice.selfMute !== null && this.voice.selfMute !== undefined) ? this.voice.selfMute : false) : null,
+        self_deaf: this.voice ? ((this.voice.selfDeaf !== null && this.voice.selfDeaf !== undefined) ? this.voice.selfDeaf :  false) : null,
       },
       options,
     );
